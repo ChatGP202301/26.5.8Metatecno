@@ -1,0 +1,35 @@
+# Robots.txt for Metatecno Website
+# https://metatecnocq.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://metatecnocq.com/sitemap.xml
+
+# Disallow admin and private directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow all search engines to crawl
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Crawl-delay for well-behaved bots (optional)
+Crawl-delay: 1

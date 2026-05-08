@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
+    <!-- Homepage - All Languages -->
+    <url>
+        <loc>https://metatecnocq.com/en</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://metatecnocq.com/en"/>
+        <xhtml:link rel="alternate" hreflang="zh-CN" href="https://metatecnocq.com/zh"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://metatecnocq.com/ru"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://metatecnocq.com/fr"/>
+        <xhtml:link rel="alternate" hreflang="de" href="https://metatecnocq.com/de"/>
+        <xhtml:link rel="alternate" hreflang="es" href="https://metatecnocq.com/es"/>
+        <xhtml:link rel="alternate" hreflang="ja" href="https://metatecnocq.com/ja"/>
+        <xhtml:link rel="alternate" hreflang="ko" href="https://metatecnocq.com/ko"/>
+        <xhtml:link rel="alternate" hreflang="ar" href="https://metatecnocq.com/ar"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://metatecnocq.com/pt"/>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- About Pages -->
+    <url>
+        <loc>https://metatecnocq.com/en/about</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Product Pages -->
+    <url>
+        <loc>https://metatecnocq.com/en/products</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://metatecnocq.com/en/products/electrolyzer-seals</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://metatecnocq.com/en/products/fluoroplastic</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://metatecnocq.com/en/products/pipeline-seals</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Technology Page -->
+    <url>
+        <loc>https://metatecnocq.com/en/technology</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- News Page -->
+    <url>
+        <loc>https://metatecnocq.com/en/news</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Contact Page -->
+    <url>
+        <loc>https://metatecnocq.com/en/contact</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Russian Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/ru</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://metatecnocq.com/ru/products</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- French Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/fr</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- German Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/de</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Spanish Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/es</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Japanese Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/ja</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Korean Language Pages -->
+    <url>
+        <loc>https://metatecnocq.com/ko</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Additional language pages would follow the same pattern -->
+    
+</urlset>
