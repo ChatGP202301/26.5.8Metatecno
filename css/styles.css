@@ -1068,3 +1068,188 @@ section {
         max-height: 400px;
     }
 }
+
+/* ===================================
+   Products Page Styles
+   =================================== */
+.products-hero {
+    background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.products-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.products-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.product-category {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-category:last-of-type {
+    border-bottom: none;
+}
+
+.category-header {
+    margin-bottom: 2rem;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0066cc;
+    margin-bottom: 0.5rem;
+}
+
+.category-desc {
+    color: #666;
+    font-size: 1rem;
+}
+
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+    text-align: center;
+}
+
+.product-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.product-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-name {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .product-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+    }
+    .products-hero h1, .page-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===================================
+   Technology Page Styles
+   =================================== */
+.tech-hero {
+    background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+}
+.tech-hero h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+.tech-hero p { font-size: 1.1rem; opacity: 0.9; }
+
+.tech-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+.tech-section:last-of-type { border-bottom: none; }
+.tech-section h2 { font-size: 1.8rem; color: #0066cc; margin-bottom: 1.5rem; font-weight: 700; }
+.tech-section h3 { font-size: 1.2rem; color: #333; margin: 1.5rem 0 0.75rem; font-weight: 600; }
+.tech-section p { color: #555; line-height: 1.8; margin-bottom: 1rem; }
+.tech-section ul { padding-left: 1.5rem; color: #555; line-height: 1.8; }
+.tech-section li { margin-bottom: 0.5rem; }
+
+.tech-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+.tech-table th {
+    background: #0066cc;
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+.tech-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    color: #444;
+}
+.tech-table tr:nth-child(even) td { background: #f8f9fa; }
+
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.equipment-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+}
+.equipment-item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+.equipment-item p {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .tech-hero h1 { font-size: 1.8rem; }
+    .equipment-grid { grid-template-columns: repeat(2, 1fr); }
+}
