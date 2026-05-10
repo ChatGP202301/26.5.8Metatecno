@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology & Equipment - Metatecno</title>
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .tech-hero {background: linear-gradient(135deg, #0066cc 0%, #004d99 100%); color: white; padding: 4rem 2rem 3rem; text-align: center;}
+        .tech-hero h1 {font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;}
+        .tech-section {padding: 3rem 2rem; max-width: 1200px; margin: 0 auto;}
+        .tech-section:nth-child(even) {background: #f8f9fa;}
+        .tech-section h2 {color: #0066cc; font-size: 2rem; margin-bottom: 1.5rem;}
+        .tech-section h3 {color: #333; font-size: 1.5rem; margin: 2rem 0 1rem;}
+        .tech-content {line-height: 1.8; color: #444;}
+        .tech-content p {margin-bottom: 1rem;}
+        .tech-content ul {margin: 1rem 0; padding-left: 2rem;}
+        .tech-content li {margin-bottom: 0.5rem;}
+        .equipment-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;}
+        .equipment-item {background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s;}
+        .equipment-item:hover {transform: translateY(-5px); box-shadow: 0 6px 16px rgba(0,0,0,0.15);}
+        .equipment-img {width: 100%; height: 300px; object-fit: contain; background: #f8f9fa; padding: 1rem;}
+        .equipment-name {padding: 1rem; font-weight: 600; color: #333; text-align: center; border-top: 2px solid #0066cc;}
+        .warning-box {background: #fff3cd; border-left: 4px solid #ffc107; padding: 1rem; margin: 1rem 0; border-radius: 4px;}
+        .info-box {background: #d1ecf1; border-left: 4px solid #0dcaf0; padding: 1rem; margin: 1rem 0; border-radius: 4px;}
+    </style>
+</head>
+<body>
+    <a href="https://api.whatsapp.com/send?phone=8619908311885" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="white"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.738 5.482 2.031 7.788L.05 31.95l8.312-2.006A15.887 15.887 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333A13.293 13.293 0 019.238 27.5l-.475-.282-4.931 1.189 1.22-4.8-.31-.494A13.243 13.243 0 012.667 16c0-7.363 5.97-13.333 13.333-13.333S29.333 8.637 29.333 16 23.363 29.333 16 29.333z"/><path d="M22.95 19.1c-.35-.175-2.075-1.025-2.4-1.15-.325-.1-.55-.15-.775.15s-.9 1.15-1.1 1.375c-.2.225-.4.25-.75.075-1.75-.875-2.9-1.563-4.05-3.538-.3-.525.3-.488.863-1.625.087-.225.038-.4-.025-.575-.062-.175-.775-1.863-1.063-2.55-.287-.675-.575-.575-.775-.587-.2-.013-.425-.013-.65-.013s-.6.088-.913.438c-.312.35-1.2 1.175-1.2 2.862s1.225 3.325 1.4 3.55c.175.225 2.438 3.725 5.913 5.225.825.362 1.475.575 1.975.738.838.262 1.6.225 2.2.137.675-.1 2.075-.85 2.362-1.662.288-.813.288-1.513.2-1.663-.087-.15-.312-.237-.662-.412z"/></svg>
+    </a>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html"><img src="../images/logo.svg" alt="Metatecno" style="height: 60px;"></a></div>
+            <button class="mobile-menu-toggle"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="technology.html" class="active">Technology</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="tech-hero">
+        <h1>Technology & Equipment</h1>
+        <p>Advanced fluoropolymer processing technology and quality control equipment</p>
+    </section>
+
+    <!-- Fluoropolymer Processing Technology -->
+    <section class="tech-section">
+        <h2>Fluoropolymer Molding Technology</h2>
+        <div class="tech-content">
+            <p>Fluoropolymer compression molding can process sheets, rods, sleeves, tapes, sealing rings, diaphragms, and parts with metal inserts. The molding process consists of three steps: preforming, sintering, and cooling.</p>
+            
+            <h3>Compression Molding Process</h3>
+            <p><strong>Preforming:</strong> PTFE powder is uniformly loaded into the mold and compressed at room temperature to form a dense preform (blank). The compression ratio should be 4-6 for PTFE, with attention to molding shrinkage rate (typically 2.6-4.5%).</p>
+            
+            <p><strong>Sintering:</strong> The preform is heated above the melting point. Key parameters include:</p>
+            <ul>
+                <li>Heating rate: 20-120°C/hour (slower for larger products)</li>
+                <li>Suspension polymerization resin: 370-380°C</li>
+                <li>Dispersion polymerization resin: 360-370°C</li>
+                <li>Note: Higher sintering temperature increases shrinkage and porosity</li>
+            </ul>
+
+            <p><strong>Cooling:</strong> Slow cooling is generally used at 15-25°C/hour. Rapid cooling is only used for special cases such as thin sheets less than 5mm thick or thin-walled tubes from ram extrusion. Post-molding annealing at 100-120°C for 4-6 hours may be required.</p>
+
+            <div class="info-box">
+                <strong>Material Requirements:</strong> Suspension polymerization resin with particle size 20-500 microns is preferred. "Degassing" is essential during compression. Preforming pressure: 17-35 MPa. Holding time depends on blank thickness (e.g., 15 minutes for 100mm thick blanks).
+            </div>
+        </div>
+    </section>
+
+    <!-- Rolling Process -->
+    <section class="tech-section">
+        <h2>Fluoropolymer Rolling Process</h2>
+        <div class="tech-content">
+            <p>PTFE membranes are produced by rolling. The process transforms the material from opaque white to semi-transparent crystalline appearance.</p>
+            
+            <h3>Unidirectional Rolling</h3>
+            <p>Reheated transparent membrane is rapidly passed through two identical rotating rolls of a calender. Rolling ratio: 1.5-2.5, typical roll speed: 20 rpm.</p>
+            
+            <h3>Multi-directional Rolling</h3>
+            <p>Sintered and quenched membranes are calendered in multiple directions to gradually reduce membrane thickness. Rolling ratio: 2-2.5. Roll temperature: 150-200°C. Steam pressure (if steam heated): 0.5-0.9 MPa. Multiple rolling passes may be required for optimal results.</p>
+        </div>
+    </section>
+
+    <!-- Injection Molding -->
+    <section class="tech-section">
+        <h2>Injection Molding (PFA)</h2>
+        <div class="tech-content">
+            <p>PFA (copolymer of tetrafluoroethylene and perfluoroalkyl vinyl ether), a meltable PTFE, can be injection molded.</p>
+            
+            <h3>Processing Parameters</h3>
+            <ul>
+                <li>Processing temperature range: 330-410°C (max 425°C, decomposition above 450°C)</li>
+                <li>Moisture absorption: 0.03% (no drying required)</li>
+                <li>Insert preheating: 140°C</li>
+                <li>Barrel temperature zones: 200-210, 300-310, 350-410°C</li>
+                <li>Nozzle temperature: Slightly below maximum barrel temperature</li>
+                <li>Mold temperature: 140-230°C</li>
+                <li>Injection pressure: 40-90 MPa</li>
+                <li>Injection speed: Moderately slow</li>
+                <li>Holding time: Not too long</li>
+                <li>Cooling time: 40-150 seconds</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Secondary Processing -->
+    <section class="tech-section">
+        <h2>Secondary Processing Techniques</h2>
+        <div class="tech-content">
+            <p>Due to fluoropolymer processing characteristics, some products require secondary processing. Techniques include:</p>
+            
+            <h3>Machining</h3>
+            <p>Similar to metal cutting methods using lathes, drilling machines, and planers. Important: Blanks must be left for 24 hours before machining.</p>
+            
+            <h3>Welding</h3>
+            <p><strong>Heat Compression Welding:</strong> Heated to above 327°C in special fixtures with applied pressure.</p>
+            <p><strong>Hot Air Welding:</strong> Uses PFA welding rods with heat and pressure to join two parts.</p>
+            
+            <h3>Lining</h3>
+            <p>PTFE and FEP (F4 and F46) plastic linings for ferrous metal pipes and fittings, used in chemical corrosion-resistant applications.</p>
+            
+            <h3>Expansion</h3>
+            <p>Production of corrugated tubes, heat-shrink tubes, and heat-shrink films through continuous or intermittent expansion processes.</p>
+        </div>
+    </section>
+
+    <!-- Seal Installation Guidelines -->
+    <section class="tech-section">
+        <h2>Seal Installation Guidelines</h2>
+        <div class="tech-content">
+            <h3>Key Installation Precautions</h3>
+            
+            <div class="warning-box">
+                <strong>1. Protect Sealing Surfaces</strong>
+                <p>Do not damage the sealing surface or sealing line of the seal. Flat seals rely on top and bottom surfaces; hydraulic seals depend on lip lines matching holes or shafts. These areas are made of soft, resilient, temperature-resistant, corrosion-resistant, and aging-resistant materials (graphite, rubber, plastics, fibers) that are easily damaged. Extra care is required during handling, installation, and storage. Damage can leave significant hidden defects in sealed areas.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>2. Avoid Forced Installation</strong>
+                <p>Some seals are installed in groove-shaped packing glands requiring tight fitting. Do not use rough or forceful installation methods. Forcing installation will destroy the original preformed structure of the seal, similar to how crushed precast concrete used as fill would cause failure. Installation must be careful and meticulous, with gradual, step-by-step insertion.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>3. Ensure Balance and Symmetry</strong>
+                <p>Position the seal exactly on the effective sealing surface (or lip line). After system startup, further observation and seal tightening follow-up work is needed to prevent micro-leakage and rupture due to changing operating conditions (such as pressure increase).</p>
+            </div>
+
+            <h3>Proper Storage of Unused Seals</h3>
+            <ul>
+                <li><strong>Prevent Aging:</strong> Protect from light and moisture, store flat, away from heat and cold sources</li>
+                <li><strong>Avoid Pressure:</strong> Maintain natural relaxed state, do not apply external force that changes physical shape</li>
+                <li><strong>Classification & Labeling:</strong> Mark same appearance/different materials, usage location, applicable standards, purchase date, etc.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Quality Control Equipment -->
+    <section class="tech-section">
+        <h2>Quality Control Equipment</h2>
+        <div class="equipment-grid">
+            <div class="equipment-item">
+                <img src="../images/products/equipment-servo-press.jpg" alt="Servo Press" loading="lazy" class="equipment-img">
+                <div class="equipment-name">Servo Press Machine</div>
+            </div>
+            <div class="equipment-item">
+                <img src="../images/products/equipment-rheometer.jpg" alt="Rotorless Rheometer" loading="lazy" class="equipment-img">
+                <div class="equipment-name">Rotorless Rheometer</div>
+            </div>
+            <div class="equipment-item">
+                <img src="../images/products/equipment-microscope.jpg" alt="Microscope" loading="lazy" class="equipment-img">
+                <div class="equipment-name">Industrial Microscope</div>
+            </div>
+            <div class="equipment-item">
+                <img src="../images/products/equipment-tensile-tester.jpg" alt="Tensile Tester" loading="lazy" class="equipment-img">
+                <div class="equipment-name">Rubber Tensile Testing Machine</div>
+            </div>
+            <div class="equipment-item">
+                <img src="../images/products/equipment-mooney-viscometer.jpg" alt="Mooney Viscometer" loading="lazy" class="equipment-img">
+                <div class="equipment-name">Automatic Mooney Viscometer</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Metatecno</h4>
+                    <p>Professional manufacturer of ion membrane electrolyzer sealing products</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>No. 302, Zhenxing Road, Chuannan Lingang Area, China (Sichuan) Pilot Free Trade Zone</li>
+                        <li>Tel: +86-19908311885</li>
+                        <li>Email: info@metatecnocq.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Metatecno(Chongqing)Technology Co.,LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>
