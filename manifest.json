@@ -1,0 +1,158 @@
+{
+  "name": "Metatecno - 工业橡胶和氟塑料密封解决方案",
+  "short_name": "Metatecno",
+  "description": "专业的工业密封产品制造商,为离子膜电解槽和PTFE软管提供高质量密封解决方案",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#f5f7fa",
+  "theme_color": "#0b8f8d",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "categories": [
+    "business",
+    "manufacturing",
+    "industrial"
+  ],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/home-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Metatecno 首页 - 桌面版"
+    },
+    {
+      "src": "/assets/screenshots/home-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Metatecno 首页 - 移动版"
+    },
+    {
+      "src": "/assets/screenshots/products.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "产品中心"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "产品中心",
+      "short_name": "产品",
+      "description": "浏览我们的工业密封产品",
+      "url": "/zh/products/",
+      "icons": [
+        {
+          "src": "/assets/icons/products-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "联系我们",
+      "short_name": "联系",
+      "description": "获取报价和技术支持",
+      "url": "/zh/contact/",
+      "icons": [
+        {
+          "src": "/assets/icons/contact-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "关于我们",
+      "short_name": "关于",
+      "description": "了解Metatecno",
+      "url": "/zh/about/",
+      "icons": [
+        {
+          "src": "/assets/icons/about-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "drawings",
+          "accept": ["image/*", ".pdf", ".dwg", ".dxf"]
+        }
+      ]
+    }
+  },
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/contact?email=%s"
+    }
+  ]
+}
