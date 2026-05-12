@@ -15,16 +15,16 @@
       message: 'Hello, I\'m interested in your products'
     },
     wechat: {
-      enabled: true,
-      qrcode: '/assets/wechat-qr.png' // 微信二维码图片路径
+      enabled: false,
+      qrcode: '/assets/wechat-qr.png'
     },
     email: {
-      enabled: true,
-      address: 'info@metatecno.com',
+      enabled: false,
+      address: 'info@metatecnocq.com',
       subject: 'Product Inquiry'
     },
     phone: {
-      enabled: true,
+      enabled: false,
       number: '+862372600785',
       display: '+86 23 7260 0785'
     },
