@@ -1,3 +1,14 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.metatecno.com/sitemap.xml
+Disallow: /admin/
+Disallow: /thank-you/
+Disallow: /*?*
+Disallow: /private/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://www.metatecnocq.com/sitemap.xml
