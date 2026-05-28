@@ -5,10 +5,16 @@ Disallow: /thank-you/
 Disallow: /*?*
 Disallow: /private/
 
-User-agent: GPTBot
+User-agent: Googlebot
 Allow: /
 
-User-agent: Googlebot
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
 Allow: /
 
 Sitemap: https://www.metatecnocq.com/sitemap.xml
