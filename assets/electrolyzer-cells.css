@@ -1,0 +1,152 @@
+.electrolyzer-cell-page .page-hero {
+  min-height: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 590px) minmax(320px, 660px);
+  justify-content: center;
+  align-items: center;
+  gap: clamp(22px, 4vw, 56px);
+  padding: clamp(34px, 6vw, 76px) clamp(18px, 6vw, 86px) clamp(34px, 5vw, 64px);
+  background: #16283a;
+  overflow: hidden;
+}
+
+.electrolyzer-cell-page .page-hero::before {
+  background: linear-gradient(135deg, rgba(7, 21, 34, .94), rgba(26, 48, 66, .88) 52%, rgba(66, 84, 98, .55));
+}
+
+.electrolyzer-cell-page .page-hero > div {
+  min-width: 0;
+  max-width: 590px;
+}
+
+.electrolyzer-cell-page .page-hero .kicker {
+  margin-bottom: 14px;
+  font-size: 12px;
+  line-height: 1.35;
+  letter-spacing: .07em;
+}
+
+.electrolyzer-cell-page .page-hero h1 {
+  max-width: 12ch;
+  margin-bottom: 18px;
+  font-size: clamp(38px, 4.8vw, 58px);
+  line-height: 1.06;
+}
+
+.electrolyzer-cell-page .page-hero > div > p:not(.kicker) {
+  margin: 0;
+  max-width: 58ch;
+  color: rgba(255, 255, 255, .84);
+  font-size: clamp(16px, 1.25vw, 19px);
+  font-weight: 560;
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.electrolyzer-cell-page .page-hero > img {
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 8px;
+  box-shadow: 0 22px 54px rgba(0, 0, 0, .28);
+}
+
+.electrolyzer-cell-page .hero-actions {
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.electrolyzer-cell-page .section {
+  padding-top: clamp(46px, 6vw, 82px);
+  padding-bottom: clamp(46px, 6vw, 82px);
+}
+
+.electrolyzer-cell-page .intro {
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr);
+}
+
+.electrolyzer-cell-page .feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.electrolyzer-cell-page .media-grid.workshop {
+  align-items: start;
+}
+
+.electrolyzer-cell-page .media-card.workshop img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 1080px) {
+  .electrolyzer-cell-page .page-hero {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    padding-top: 42px;
+  }
+
+  .electrolyzer-cell-page .page-hero > div {
+    max-width: 760px;
+  }
+
+  .electrolyzer-cell-page .page-hero h1 {
+    max-width: 14ch;
+    font-size: clamp(38px, 7vw, 56px);
+  }
+
+  .electrolyzer-cell-page .page-hero > img {
+    max-height: 480px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .electrolyzer-cell-page .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .electrolyzer-cell-page .page-hero {
+    gap: 20px;
+    padding: 30px 16px 34px;
+  }
+
+  .electrolyzer-cell-page .page-hero h1 {
+    max-width: 100%;
+    font-size: clamp(31px, 9vw, 40px);
+    line-height: 1.08;
+  }
+
+  .electrolyzer-cell-page .page-hero .kicker {
+    font-size: 11px;
+  }
+
+  .electrolyzer-cell-page .page-hero > div > p:not(.kicker) {
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+
+  .electrolyzer-cell-page .page-hero > img {
+    max-height: none;
+    aspect-ratio: 4 / 3;
+  }
+
+  .electrolyzer-cell-page .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .electrolyzer-cell-page .hero-actions .button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .electrolyzer-cell-page .intro,
+  .electrolyzer-cell-page .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
