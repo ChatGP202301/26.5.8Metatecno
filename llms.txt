@@ -1,0 +1,25 @@
+# Metatecno
+> Metatecno is an independent manufacturer of chlor-alkali electrolyzer sealing products and fluoroplastic components made to reviewed drawings, samples and operating conditions.
+
+## Official scope
+- Chlor-alkali ion membrane electrolyzer gaskets and sealing products
+- Compatible replacement gaskets reviewed by platform, sealing position, drawing and operating conditions
+- Fluoroplastic sealing products and PTFE hose assemblies
+- Electrolyzer cell repair and retrofit review
+
+## Important pages
+- [Product overview](https://www.metatecnocq.com/en/products/): Product and quotation routes
+- [Chlor-alkali electrolyzer gaskets](https://www.metatecnocq.com/en/products/chlor-alkali-electrolyzer-gaskets/): Gasket scope and RFQ inputs
+- [Technology and quality](https://www.metatecnocq.com/en/technology/): Published process and inspection overview
+- [Request a technical quotation](https://www.metatecnocq.com/en/contact/): Drawing and operating-condition submission requirements
+- [Privacy policy](https://www.metatecnocq.com/en/privacy-policy/): Inquiry and analytics data handling
+- [Terms of service](https://www.metatecnocq.com/en/terms-of-service/): Website, quotation and compatibility terms
+
+## Quotation facts
+- A model number alone is not a complete quotation basis.
+- Provide the drawing or sample photos, sealing position, material requirement, medium, temperature, pressure, quantity and operating conditions.
+- Final material, dimensions, tolerances, inspection scope and suitability are controlled by the reviewed quotation, drawing or signed order.
+
+## Compatibility notice
+- Third-party model and brand names identify compatibility requirements only.
+- Metatecno does not claim affiliation with, endorsement by or authorization from an original equipment manufacturer unless expressly documented.

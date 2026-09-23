@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "metatecno-edge",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-08-14",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "www.metatecnocq.com/*", "zone_name": "metatecnocq.com" },
+    { "pattern": "metatecnocq.com/*", "zone_name": "metatecnocq.com" }
+  ],
+  "triggers": {
+    "crons": ["17 2 * * *"]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "LEAD_DESTINATION": "expresswater025@gmail.com",
+    "LEAD_SENDER": "website-leads@metatecnocq.com"
+  },
+  "send_email": [
+    {
+      "name": "LEAD_EMAIL",
+      "destination_address": "expresswater025@gmail.com",
+      "allowed_sender_addresses": ["website-leads@metatecnocq.com"]
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "LEADS_DB",
+      "database_name": "metatecno-leads-metadata",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "worker/migrations"
+    }
+  ]
+}

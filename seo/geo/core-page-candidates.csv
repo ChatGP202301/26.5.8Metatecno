@@ -1,0 +1,13 @@
+priority,path,commercial_role,selection_status,gsc_evidence,sales_priority,engineering_review,translation_status
+1,/,English x-default home,provisional-awaiting-gsc,no-data,high,pending,source-English
+2,/en/products/,product discovery hub,provisional-awaiting-gsc,no-data,high,pending,source-English
+3,/en/products/chlor-alkali-electrolyzer-gaskets/,category quotation page,provisional-awaiting-gsc,no-data,high,pending,source-English
+4,/en/products/dd350-anode-gasket/,model and position quotation page,provisional-awaiting-gsc,no-data,high,pending,source-English
+5,/en/products/dd350-cathode-gasket/,model and position quotation page,provisional-awaiting-gsc,no-data,high,pending,source-English
+6,/en/products/uhde-type-electrolyzer-gasket/,compatibility quotation page,provisional-awaiting-gsc,no-data,medium,pending,source-English
+7,/en/products/ineos-type-electrolyzer-gasket/,compatibility quotation page,provisional-awaiting-gsc,no-data,medium,pending,source-English
+8,/en/products/asahi-kasei-type-electrolyzer-gasket/,compatibility quotation page,provisional-awaiting-gsc,no-data,medium,pending,source-English
+9,/en/products/ptfe-hose-assemblies/,fluoroplastic quotation page,provisional-awaiting-gsc,no-data,medium,pending,source-English
+10,/en/technology/,process and inspection evidence,provisional-awaiting-gsc,no-data,high,pending,source-English
+11,/en/trust/,trust and evidence center,provisional-awaiting-gsc,no-data,high,pending,held-noindex
+12,/en/contact/,RFQ conversion page,provisional-awaiting-gsc,no-data,high,pending,source-English

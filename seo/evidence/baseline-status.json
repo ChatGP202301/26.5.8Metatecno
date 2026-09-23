@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "status": "awaiting-16-month-export",
+  "windowMonths": 16,
+  "windowStart": null,
+  "windowEnd": null,
+  "exports": {
+    "searchPerformance": false,
+    "pageIndexing": false,
+    "sitemaps": false,
+    "externalLinks": false,
+    "qualifiedLeadBaseline": false
+  },
+  "containsLeadPii": false,
+  "approvedAt": null,
+  "approvedByRole": null,
+  "note": "Keep this blocked until the real 16-month Search Console exports and a sanitized qualified-lead baseline have been reviewed. Do not place names, email addresses, phone numbers or inquiry text in this directory."
+}

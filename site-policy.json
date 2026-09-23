@@ -1,0 +1,39 @@
+{
+  "origin": "https://www.metatecnocq.com",
+  "primaryLocales": ["en", "es-419", "pt-BR", "fr", "ru", "ar"],
+  "frozenIndexableLocales": ["it"],
+  "draftLocales": ["ar"],
+  "excludedLocalDirectories": ["de"],
+  "englishHomepage": "/",
+  "englishLegacyHomepage": "/en/",
+  "leadEndpoint": "/api/lead",
+  "publicSalesEmail": "info@metatecnocq.com",
+  "leadDestination": "expresswater025@gmail.com",
+  "leadSender": "website-leads@metatecnocq.com",
+  "turnstileSiteKeyToken": "__TURNSTILE_SITE_KEY__",
+  "ga4MeasurementIdToken": "__GA4_MEASUREMENT_ID__",
+  "manifestVersion": 2,
+  "indexingEvidence": {
+    "baselineStatus": "seo/evidence/baseline-status.json",
+    "pageEvidence": "seo/evidence/indexing-evidence.csv",
+    "generatedDecisions": "seo/indexing-decisions.generated.json",
+    "missingEvidenceAction": "hold",
+    "noindexAction": "noindex,follow"
+  },
+  "contentEvidence": {
+    "registry": "seo/content-evidence.json",
+    "unapprovedAction": "noindex,follow",
+    "publicationRule": "all-required-roles-approved"
+  },
+  "qualifiedLeadDefinition": {
+    "accepted": "email-service-api-accepted",
+    "delivered": "email-service-activity-log-delivered",
+    "qualified": "delivered-and-gmail-label-metatecno-qualified"
+  },
+  "gscGate": {
+    "status": "awaiting-16-month-export",
+    "preserveWhen": ["organic_click", "qualified_lead", "meaningful_backlink", "native_review_passed"],
+    "otherwise": "reviewed_then_noindex_follow",
+    "missingEvidence": "hold"
+  }
+}

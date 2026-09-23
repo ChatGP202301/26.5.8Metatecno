@@ -1,0 +1,337 @@
+.mt-electrolyzer-page {
+  --mt-ink: #102536;
+  --mt-blue: #176a9b;
+  --mt-blue-dark: #0d4569;
+  --mt-cyan: #75c9df;
+  --mt-warm: #f3a446;
+  --mt-paper: #f4f7f8;
+  color: var(--mt-ink);
+}
+
+.mt-electrolyzer-page .mt-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+  align-items: stretch;
+  min-height: min(720px, 82vh);
+  background: linear-gradient(135deg, #0a2538 0%, #123f5c 58%, #176a9b 100%);
+  color: #fff;
+}
+
+.mt-electrolyzer-page .mt-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(54px, 8vw, 110px) clamp(24px, 7vw, 100px);
+}
+
+.mt-electrolyzer-page .mt-eyebrow {
+  margin: 0;
+  color: var(--mt-cyan);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.mt-electrolyzer-page .mt-hero h1 {
+  max-width: 13ch;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(42px, 5.5vw, 76px);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.mt-electrolyzer-page .mt-hero-copy > p:not(.mt-eyebrow) {
+  max-width: 62ch;
+  margin: 0;
+  color: rgba(255,255,255,.84);
+  font-size: clamp(17px, 1.35vw, 21px);
+  line-height: 1.65;
+}
+
+.mt-electrolyzer-page .mt-hero-media {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+}
+
+.mt-electrolyzer-page .mt-hero-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10,37,56,.3), transparent 45%);
+  content: "";
+}
+
+.mt-electrolyzer-page .mt-hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mt-electrolyzer-page .mt-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(64px, 8vw, 110px) clamp(20px, 5vw, 64px);
+}
+
+.mt-electrolyzer-page .mt-section-head {
+  display: grid;
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr);
+  gap: clamp(28px, 6vw, 84px);
+  align-items: start;
+  margin-bottom: 42px;
+}
+
+.mt-electrolyzer-page .mt-section-head h2 {
+  margin: 0;
+  color: var(--mt-ink);
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -.035em;
+}
+
+.mt-electrolyzer-page .mt-section-head p {
+  margin: 0;
+  max-width: 66ch;
+  color: #536572;
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.mt-electrolyzer-page .mt-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #cbd6dc;
+  border-bottom: 1px solid #cbd6dc;
+}
+
+.mt-electrolyzer-page .mt-principles article {
+  padding: 34px 28px 40px;
+}
+
+.mt-electrolyzer-page .mt-principles article + article {
+  border-inline-start: 1px solid #cbd6dc;
+}
+
+.mt-electrolyzer-page .mt-number {
+  display: block;
+  margin-bottom: 42px;
+  color: var(--mt-blue);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.mt-electrolyzer-page .mt-principles h3,
+.mt-electrolyzer-page .mt-materials h3,
+.mt-electrolyzer-page .mt-checkpoints h3 {
+  margin: 0 0 12px;
+  color: var(--mt-ink);
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.mt-electrolyzer-page .mt-principles p,
+.mt-electrolyzer-page .mt-materials p,
+.mt-electrolyzer-page .mt-checkpoints p {
+  margin: 0;
+  color: #5a6c78;
+  line-height: 1.7;
+}
+
+.mt-electrolyzer-page .mt-band {
+  background: var(--mt-paper);
+}
+
+.mt-electrolyzer-page .mt-materials,
+.mt-electrolyzer-page .mt-checkpoints {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: #ccd7dc;
+  border: 1px solid #ccd7dc;
+}
+
+.mt-electrolyzer-page .mt-materials article,
+.mt-electrolyzer-page .mt-checkpoints article {
+  min-height: 220px;
+  padding: 30px 26px;
+  background: #fff;
+}
+
+.mt-electrolyzer-page .mt-process {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mt-electrolyzer-page .mt-process li {
+  position: relative;
+  min-height: 210px;
+  padding: 28px;
+  overflow: hidden;
+  background: #0f3149;
+  color: #fff;
+}
+
+.mt-electrolyzer-page .mt-process img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .3;
+}
+
+.mt-electrolyzer-page .mt-process div {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 154px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.mt-electrolyzer-page .mt-process strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-size: 21px;
+}
+
+.mt-electrolyzer-page .mt-process span {
+  color: rgba(255,255,255,.82);
+  line-height: 1.55;
+}
+
+.mt-electrolyzer-page .mt-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.mt-electrolyzer-page .mt-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  background: #e5eaec;
+}
+
+.mt-electrolyzer-page .mt-gallery img {
+  width: 100%;
+  height: clamp(340px, 46vw, 610px);
+  object-fit: cover;
+}
+
+.mt-electrolyzer-page .mt-gallery figcaption {
+  padding: 18px 20px;
+  color: var(--mt-ink);
+  font-weight: 800;
+}
+
+.mt-electrolyzer-page .mt-notice {
+  margin-top: 34px;
+  padding: 22px 24px;
+  border-inline-start: 4px solid var(--mt-warm);
+  background: #fff8ee;
+  color: #4e5e68;
+  line-height: 1.7;
+}
+
+.mt-electrolyzer-page .mt-faq {
+  border-top: 1px solid #ccd7dc;
+}
+
+.mt-electrolyzer-page .mt-faq details {
+  border-bottom: 1px solid #ccd7dc;
+}
+
+.mt-electrolyzer-page .mt-faq summary {
+  padding: 22px 0;
+  color: var(--mt-ink);
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mt-electrolyzer-page .mt-faq details p {
+  max-width: 74ch;
+  margin: 0 0 24px;
+  color: #576a76;
+  line-height: 1.75;
+}
+
+.mt-electrolyzer-page .mt-cta {
+  max-width: none;
+  padding: clamp(62px, 8vw, 100px) clamp(20px, 8vw, 110px);
+  background: linear-gradient(120deg, #102f45, #176a9b);
+  color: #fff;
+}
+
+.mt-electrolyzer-page .mt-cta-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 36px;
+  align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.mt-electrolyzer-page .mt-cta h2 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: clamp(34px, 4vw, 54px);
+}
+
+.mt-electrolyzer-page .mt-cta p {
+  max-width: 66ch;
+  margin: 0;
+  color: rgba(255,255,255,.82);
+  line-height: 1.7;
+}
+
+.mt-electrolyzer-page .mt-cta .hero-actions {
+  margin: 0;
+}
+
+.rtl-page.mt-electrolyzer-page .mt-hero h1,
+.rtl-page.mt-electrolyzer-page .mt-section-head h2 {
+  letter-spacing: 0;
+}
+
+@media (max-width: 980px) {
+  .mt-electrolyzer-page .mt-hero,
+  .mt-electrolyzer-page .mt-section-head,
+  .mt-electrolyzer-page .mt-cta-inner {
+    grid-template-columns: 1fr;
+  }
+  .mt-electrolyzer-page .mt-hero { min-height: 0; }
+  .mt-electrolyzer-page .mt-hero-media { min-height: 390px; }
+  .mt-electrolyzer-page .mt-materials,
+  .mt-electrolyzer-page .mt-checkpoints { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mt-electrolyzer-page .mt-process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 680px) {
+  .mt-electrolyzer-page .mt-hero-copy { padding: 46px 18px 42px; }
+  .mt-electrolyzer-page .mt-hero h1 { max-width: none; font-size: clamp(38px, 13vw, 54px); }
+  .mt-electrolyzer-page .mt-hero-media { min-height: 300px; }
+  .mt-electrolyzer-page .mt-section { padding: 58px 18px; }
+  .mt-electrolyzer-page .mt-principles,
+  .mt-electrolyzer-page .mt-materials,
+  .mt-electrolyzer-page .mt-checkpoints,
+  .mt-electrolyzer-page .mt-process,
+  .mt-electrolyzer-page .mt-gallery { grid-template-columns: 1fr; }
+  .mt-electrolyzer-page .mt-principles article + article {
+    border-inline-start: 0;
+    border-top: 1px solid #cbd6dc;
+  }
+  .mt-electrolyzer-page .mt-materials article,
+  .mt-electrolyzer-page .mt-checkpoints article { min-height: 0; }
+  .mt-electrolyzer-page .mt-gallery img { height: 360px; }
+  .mt-electrolyzer-page .mt-cta { padding: 58px 18px; }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "status": "blocked-awaiting-evidence",
+  "generatedAt": null,
+  "baselineStatus": "awaiting-16-month-export",
+  "decisions": [],
+  "summary": {
+    "preserve": 0,
+    "noindexFollow": 0,
+    "hold": 0
+  },
+  "note": "Generated decisions remain empty until the evidence gate is complete. Missing evidence always means hold, never noindex."
+}

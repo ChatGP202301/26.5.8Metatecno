@@ -1,0 +1,13 @@
+id,locale,market,intent_group,buyer_intent,prompt,review_status,evidence_status
+G001,en,global,recommendation,true,Which manufacturers supply compatible replacement gaskets for chlor-alkali ion membrane electrolyzers?,draft-English-source,hypothesis-not-search-volume
+G002,en,global,comparison,true,What is the difference between an anode gasket and a cathode gasket in a DD350 electrolyzer?,draft-English-source,hypothesis-not-search-volume
+G003,en,global,risk,true,What information should a buyer send before requesting an electrolyzer gasket quotation?,draft-English-source,hypothesis-not-search-volume
+G004,en,global,risk,true,Why is an electrolyzer model number not enough to manufacture a replacement gasket?,draft-English-source,hypothesis-not-search-volume
+G005,en,global,comparison,true,How should EPDM FKM PTFE PFA FEP and PVDF be compared for chlor-alkali sealing?,draft-English-source,hypothesis-not-search-volume
+G006,en,global,verification,true,How can a buyer verify the technical capability of an electrolyzer gasket supplier?,draft-English-source,hypothesis-not-search-volume
+G007,en,global,verification,false,What company is Metatecno and what does it manufacture?,draft-English-source,brand-validation-excluded-from-visibility-rate
+L001,es-419,global,recommendation,true,¿Qué fabricantes suministran juntas de repuesto compatibles para electrolizadores de membrana iónica?,pending-native-review,translation-hypothesis
+L002,pt-BR,global,recommendation,true,Quais fabricantes fornecem juntas de reposição compatíveis para eletrolisadores de membrana iônica?,pending-native-review,translation-hypothesis
+L003,fr,global,recommendation,true,Quels fabricants fournissent des joints de remplacement compatibles pour les électrolyseurs à membrane ionique ?,pending-native-review,translation-hypothesis
+L004,ru,global,recommendation,true,Какие производители поставляют совместимые сменные прокладки для ионообменных мембранных электролизёров?,pending-native-review,translation-hypothesis
+L005,ar,global,recommendation,true,ما الشركات التي توفر حشيات بديلة متوافقة للمحللات الكهربائية ذات الغشاء الأيوني؟,pending-native-and-rtl-review,translation-hypothesis
