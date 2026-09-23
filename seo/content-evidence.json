@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "policy": "Pages containing newly assembled technical guidance stay noindex until the required human roles approve the visible claims and structured data.",
+  "pages": [
+    {
+      "path": "/en/knowledge/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/en/trust/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/es/trust/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/pt/trust/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/fr/trust/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/ru/trust/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/it/trust/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/ar/trust/",
+      "status": "awaiting-english-source-native-and-rtl-review",
+      "requiredRoles": ["engineering", "sales", "native", "rtl"]
+    },
+    {
+      "path": "/en/knowledge/dd350-anode-gasket-vs-cathode-gasket/",
+      "status": "awaiting-engineering-review",
+      "requiredRoles": ["engineering"]
+    },
+    {
+      "path": "/en/knowledge/how-to-choose-gasket-material-for-chlor-alkali-electrolyzers/",
+      "status": "awaiting-engineering-review",
+      "requiredRoles": ["engineering"]
+    },
+    {
+      "path": "/en/knowledge/information-required-for-electrolyzer-seal-quotation/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/en/knowledge/ptfe-pfa-fep-pvdf-for-chemical-sealing/",
+      "status": "awaiting-engineering-review",
+      "requiredRoles": ["engineering"]
+    },
+    {
+      "path": "/en/knowledge/why-model-number-is-not-enough-for-electrolyzer-gasket-quotation/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/en/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/en/services/electrolyzer-cell-repair/",
+      "status": "awaiting-engineering-sales-review",
+      "requiredRoles": ["engineering", "sales"]
+    },
+    {
+      "path": "/es/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/es/services/electrolyzer-cell-repair/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/pt/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/pt/services/electrolyzer-cell-repair/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/fr/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/fr/services/electrolyzer-cell-repair/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/ru/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/ru/services/electrolyzer-cell-repair/",
+      "status": "awaiting-english-source-and-native-review",
+      "requiredRoles": ["engineering", "sales", "native"]
+    },
+    {
+      "path": "/ar/products/mt-2-7-ion-membrane-electrolyzer/",
+      "status": "awaiting-english-source-native-and-rtl-review",
+      "requiredRoles": ["engineering", "sales", "native", "rtl"]
+    },
+    {
+      "path": "/ar/services/electrolyzer-cell-repair/",
+      "status": "awaiting-english-source-native-and-rtl-review",
+      "requiredRoles": ["engineering", "sales", "native", "rtl"]
+    },
+    {
+      "path": "/ar/electrolyzer-cells/",
+      "status": "awaiting-english-source-native-and-rtl-review",
+      "requiredRoles": ["engineering", "sales", "native", "rtl"]
+    }
+  ]
+}

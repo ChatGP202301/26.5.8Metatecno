@@ -1,0 +1,34 @@
+{
+  "name": "metatecno-website",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "modernize": "node tools/modernize-site.mjs --write && node tools/generate-site-manifest.mjs --write",
+    "modernize:check": "node tools/modernize-site.mjs --check && node tools/generate-site-manifest.mjs --check",
+    "analyze:duplicates": "node tools/analyze-content-duplicates.mjs",
+    "audit:priority-locales": "python3 tools/seo_geo_audit.py --site-root . --langs en,es-419,pt-BR,fr,ru,ar,it --out /tmp/metatecno-static-audit",
+    "seo:indexing:evaluate": "node tools/evaluate-indexing-evidence.mjs --write",
+    "seo:indexing:check": "node tools/evaluate-indexing-evidence.mjs",
+    "build": "pnpm run modernize:check && node tools/prepare-build.mjs && eleventy --quiet && node tools/fingerprint-assets.mjs",
+    "build:production": "pnpm run release:check:site && METATECNO_ENV=production pnpm run build",
+    "verify": "node tools/verify-production.mjs --root .",
+    "verify:integrity": "node tools/verify-site-integrity.mjs --root .",
+    "verify:mt": "node tools/verify-mt-content.mjs",
+    "verify:build": "node tools/verify-production.mjs --root _site --built",
+    "test:worker": "node tools/test-worker.mjs",
+    "test:release": "node tools/test-release-readiness.mjs",
+    "test:indexing": "node tools/test-indexing-evidence.mjs",
+    "test:governance": "node tools/test-governance-integration.mjs",
+    "verify:kpi": "node tools/verify-kpi-data.mjs",
+    "test:kpi": "node tools/test-kpi-data.mjs",
+    "release:check:site": "node tools/check-release-readiness.mjs --target site",
+    "release:check:worker": "node tools/check-release-readiness.mjs --target worker",
+    "worker:check": "wrangler deploy --dry-run --outdir /tmp/metatecno-worker-dry-run",
+    "test": "pnpm run modernize:check && pnpm run verify && pnpm run verify:integrity && pnpm run verify:mt && pnpm run test:worker && pnpm run test:release && pnpm run test:indexing && pnpm run test:governance && pnpm run test:kpi && pnpm run verify:kpi && pnpm run build && pnpm run verify:build && node tools/verify-site-integrity.mjs --root _site && pnpm run worker:check"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "wrangler": "^4.30.0"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "brand": {
+    "displayName": "Metatecno",
+    "legalNameAsPublished": "Metatecno(Chongqing)Technology Co.,LTD",
+    "origin": "https://www.metatecnocq.com"
+  },
+  "businessDefinition": "Independent manufacturer of chlor-alkali electrolyzer sealing products and fluoroplastic components made to reviewed drawings, samples and operating conditions.",
+  "coreTerminology": [
+    "chlor-alkali electrolyzer gasket",
+    "ion membrane electrolyzer seal",
+    "electrolyzer cell repair",
+    "electrolyzer sealing surface",
+    "DD350-compatible gasket",
+    "UHDE-type electrolyzer gasket",
+    "INEOS-type electrolyzer gasket",
+    "Asahi Kasei-type electrolyzer gasket",
+    "PTFE hose assembly",
+    "fluoroplastic sealing product",
+    "EPDM gasket",
+    "FKM gasket",
+    "PTFE",
+    "PFA",
+    "FEP",
+    "PVDF"
+  ],
+  "procurementInputs": [
+    "drawing",
+    "sample photos",
+    "sealing position",
+    "material requirement",
+    "medium",
+    "temperature",
+    "pressure",
+    "quantity",
+    "operating conditions"
+  ],
+  "compatibilityNames": ["DD350", "UHDE", "INEOS", "Asahi Kasei", "Chlorine Engineers"],
+  "prohibitedLegacyTerminology": [
+    "sandblasting line",
+    "enamel tank production",
+    "solar collector",
+    "black coating",
+    "blue coating"
+  ],
+  "claimRules": {
+    "compatibility": "Third-party names identify compatibility requirements only and do not imply affiliation, endorsement or OEM authorization.",
+    "engineering": "Final material, dimensions, tolerances, inspection scope and suitability are controlled by the reviewed quotation, drawing or signed order.",
+    "unsupported": "Founding dates, customer names, performance results, certifications and absolute claims are prohibited until evidence is approved."
+  }
+}

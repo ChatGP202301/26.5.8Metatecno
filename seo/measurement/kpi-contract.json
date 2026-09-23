@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "northStar": "delivered_and_sales_qualified_lead",
+  "definitions": {
+    "accepted": "The Email Service API accepted the send request and returned a messageId.",
+    "delivered": "The matching Email Service Activity Log confirms delivery.",
+    "qualified": "A delivered inquiry was manually assigned the Gmail label Metatecno/Qualified by sales.",
+    "formErrorRate": "form_error events divided by form_start events; error events contain only an error code.",
+    "deliveryRate": "delivered leads divided by accepted leads."
+  },
+  "baseline": {
+    "days": 30,
+    "status": "not-started-until-production-release",
+    "containsPii": false
+  },
+  "days31To90": {
+    "qualifiedLeadMonthlyTarget": "max(baseline_monthly_average * 1.2, baseline_monthly_average + 1 when baseline is zero)",
+    "minimumDeliveryRate": 0.98,
+    "maximumFormErrorRate": 0.02
+  },
+  "allowedAnalyticsEvents": [
+    "form_start",
+    "form_error",
+    "generate_lead",
+    "contact_email",
+    "contact_whatsapp"
+  ],
+  "prohibitedAnalyticsData": [
+    "name",
+    "company",
+    "email",
+    "phone",
+    "message",
+    "drawing",
+    "form_field_value"
+  ]
+}

@@ -1,0 +1,9 @@
+_site/**
+node_modules/**
+audit-*/**
+seo/**
+tools/**
+worker/**
+de/**
+.github/**
+404.html

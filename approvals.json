@@ -1,0 +1,13 @@
+{
+  "legalReviewApproved": false,
+  "nativeLanguageReview": {
+    "es-419": false,
+    "pt-BR": false,
+    "fr": false,
+    "ru": false
+  },
+  "arabicIndexingApproved": false,
+  "gscMigrationBaselineApproved": false,
+  "indexingDecisionSetApproved": false,
+  "note": "Set values to true only after named human reviewers approve the corresponding production content and evidence. Arabic remains noindex until its separate approval is true. GSC and indexing approvals require the real 16-month exports; never set them only to bypass CI."
+}
