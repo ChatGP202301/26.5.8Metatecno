@@ -59,16 +59,16 @@ for (const file of files) {
   if (!/assets\/quality(?:\.[a-f0-9]{10})?\.css/i.test(html)) fail(`${name}: missing quality stylesheet`);
   if (!/assets\/navigation(?:\.[a-f0-9]{10})?\.js/i.test(html)) fail(`${name}: missing accessible navigation controller`);
   if (!/assets\/analytics(?:\.[a-f0-9]{10})?\.js/i.test(html)) fail(`${name}: missing analytics controller`);
-  if (/formsubmit\.co/i.test(html)) fail(`${name}: FormSubmit remains`);
-  if (/expresswater025@gmail\.com/i.test(html)) fail(`${name}: private destination email is public`);
   for (const anchor of html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi)) {
     if (/(?:^|\/)index\.html(?:[?#]|$)/i.test(anchor[1])) indexLinks += 1;
   }
   const pageForms = count(html, /<form\b[^>]*data-contact-form/gi);
   forms += pageForms;
   if (pageForms) {
-    if (count(html, /<form\b[^>]*data-contact-form[^>]*action=["']\/api\/lead["']/gi) !== pageForms) fail(`${name}: not every RFQ form uses /api/lead`);
-    if (count(html, /data-turnstile-container/gi) !== pageForms) fail(`${name}: not every RFQ form has Turnstile`);
+    if (count(html, /<form\b(?=[^>]*data-contact-form)(?=[^>]*action=["']https:\/\/formsubmit\.co\/expresswater025@gmail\.com["'])[^>]*>/gi) !== pageForms) fail(`${name}: RFQ email delivery route is missing`);
+    if (count(html, /name=["']_captcha["']\s+value=["']true["']/gi) < pageForms) fail(`${name}: RFQ spam challenge settings missing`);
+    if (count(html, /name=["']_honey["']/gi) < pageForms) fail(`${name}: RFQ honeypot missing`);
+    if (/data-turnstile-container|__TURNSTILE_SITE_KEY__/.test(html)) fail(`${name}: unconfigured Turnstile block remains`);
   }
   const locale = name === "index.html" ? "en" : name.split("/")[0];
   if (["he", "fa", "ar"].includes(locale) && !/<html\b[^>]*\bdir=["']rtl["']/i.test(html)) fail(`${name}: RTL locale lacks dir=rtl`);

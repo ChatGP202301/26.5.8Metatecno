@@ -89,7 +89,7 @@ for (const name of reviewPages) {
     const approaches = html.match(/<div\s+class=["']mt-principles["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] || "";
     if ((process.match(/<li\b/gi) || []).length !== 9) fail(`${name}: repair workflow must contain nine steps`);
     if ((approaches.match(/<article\b/gi) || []).length !== 3) fail(`${name}: repair page must contain three approaches`);
-    if (!/<form\b[^>]*action=["']\/api\/lead["']/i.test(html)) fail(`${name}: repair inquiry must use /api/lead`);
+    if (!/<form\b(?=[^>]*data-contact-form)(?=[^>]*action=["']https:\/\/formsubmit\.co\/expresswater025@gmail\.com["'])/i.test(html)) fail(`${name}: repair inquiry must use the established email delivery route`);
   }
   if (name.startsWith("ar/") && !/<html\b[^>]*lang=["']ar["'][^>]*dir=["']rtl["']/i.test(html)) fail(`${name}: Arabic page must declare RTL`);
   for (const item of forbidden) if (item.regex.test(html)) fail(`${name}: contains ${item.label}`);
