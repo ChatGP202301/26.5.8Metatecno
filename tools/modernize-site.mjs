@@ -153,17 +153,17 @@ function normalizeLocaleNavigation(html, label) {
   return html;
 }
 
-function normalizeForms(html) {
-  html = html.replace(/\sdata-email=["'][^"']*["']/gi, "");
-  html = html.replace(/\sdata-lead-endpoint=["'][^"']*["']/gi, "");
-  html = html.replace(/action=["']https:\/\/formsubmit\.co\/[^"']+["']/gi, 'action="/api/lead"');
-  html = html.replace(/action=["']\/api\/lead["']/gi, 'action="/api/lead" data-lead-endpoint="/api/lead"');
-  html = html.replace(/<input\b[^>]*\bname=["']_(?:subject|captcha|template|next|autoresponse)["'][^>]*>\s*/gi, "");
-  html = html.replaceAll("expresswater025@gmail.com", "info@metatecnocq.com");
-  html = html.replace(/(<form\b[^>]*data-contact-form[^>]*>)(?![\s\S]*?data-form-started)/gi, "$1");
-  html = html.replace(/(<form\b[^>]*data-contact-form[\s\S]*?)(<button\b[^>]*type=["']submit["'])/gi, (all, before, button) => {
-    if (before.includes("data-turnstile-container")) return all;
-    return `${before}<div class="turnstile-slot" data-turnstile-container aria-live="polite"></div>\n  ${button}`;
+function normalizeForms(html, label) {
+  const locale = folderLocale(label);
+  html = html.replace(/<form\b(?=[^>]*data-contact-form)[^>]*>[\s\S]*?<\/form>/gi, (form) => {
+    form = form.replace(/\sdata-email=["'][^"']*["']/gi, "").replace(/\sdata-lead-endpoint=["'][^"']*["']/gi, "");
+    form = form.replace(/action=["'](?:https:\/\/formsubmit\.co\/[^"']+|\/api\/lead)["']/i, 'action="https://formsubmit.co/expresswater025@gmail.com"');
+    form = form.replace(/\s*<input\b[^>]*name=["']_(?:subject|captcha|template|next|autoresponse)["'][^>]*>/gi, "");
+    form = form.replace(/\s*<div\b[^>]*data-turnstile-container[^>]*><\/div>/gi, "");
+    if (!/name=["']_honey["']/i.test(form)) form = form.replace(/(<form\b[^>]*>)/i, `$1<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">`);
+    if (!/name=["']website_url["']/i.test(form)) form = form.replace(/(<form\b[^>]*>)/i, `$1<input type="text" name="website_url" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0" aria-hidden="true">`);
+    const settings = `<input type="hidden" name="_subject" value="Metatecno website inquiry"><input type="hidden" name="_captcha" value="true"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://www.metatecnocq.com/${locale}/thank-you/"><input type="hidden" name="_autoresponse" value="Thank you. Metatecno has received your inquiry and will reply after checking the technical details.">`;
+    return form.replace(/(<form\b[^>]*>)/i, `$1\n  ${settings}`);
   });
   return html;
 }
@@ -205,10 +205,10 @@ function normalizeHead(html, label, route) {
   }
 
   html = html.replace(/\s*<meta\b[^>]*(?:property=["']og:[^"']+["']|name=["']twitter:[^"']+["'])[^>]*>/gi, "");
+  const retainUnusedTurnstileMeta = !/<form\b[^>]*data-contact-form/i.test(html);
   html = html.replace(/\s*<meta\s+name=["']metatecno-(?:turnstile-sitekey|ga4-id)["'][^>]*>/gi, "");
   html = html.replace(/\s*<link\s+rel=["']stylesheet["']\s+href=["'][^"']*assets\/quality\.css["'][^>]*>/gi, "");
-  const social = `
-  <meta name="metatecno-turnstile-sitekey" content="__TURNSTILE_SITE_KEY__">
+  const social = `${retainUnusedTurnstileMeta ? '\n  <meta name="metatecno-turnstile-sitekey" content="__TURNSTILE_SITE_KEY__">' : ""}
   <meta name="metatecno-ga4-id" content="__GA4_MEASUREMENT_ID__">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Metatecno">
@@ -268,12 +268,20 @@ function normalizePriorityPrivacy(html, label, route) {
   const locale = folderLocale(label);
   const copy = PRIVACY_DETAILS[locale];
   if (!copy) return html;
+  const formProcessorNotice = {
+    en: "FormSubmit processes and delivers website inquiry forms by email; Google provides Gmail delivery and consent-based Analytics. These providers may process data outside your country under applicable contractual and legal safeguards.",
+    es: "FormSubmit procesa y entrega por correo electrónico las consultas enviadas desde el sitio; Google proporciona Gmail y Analytics con consentimiento. Estos proveedores pueden tratar datos fuera de su país conforme a las garantías contractuales y legales aplicables.",
+    pt: "O FormSubmit processa e entrega por e-mail as consultas enviadas pelo site; o Google fornece o Gmail e o Analytics mediante consentimento. Esses provedores podem processar dados fora do seu país conforme as salvaguardas contratuais e legais aplicáveis.",
+    fr: "FormSubmit traite les demandes envoyées depuis le site et les transmet par e-mail ; Google fournit Gmail et Analytics avec consentement. Ces prestataires peuvent traiter des données hors de votre pays conformément aux garanties contractuelles et légales applicables.",
+    ru: "FormSubmit обрабатывает и доставляет по электронной почте запросы, отправленные через сайт; Google предоставляет Gmail и Analytics при наличии согласия. Эти поставщики могут обрабатывать данные за пределами вашей страны с соблюдением применимых договорных и правовых гарантий.",
+    it: "FormSubmit elabora e invia via e-mail le richieste inviate dal sito; Google fornisce Gmail e Analytics previo consenso. Questi fornitori possono trattare dati al di fuori del tuo Paese nel rispetto delle garanzie contrattuali e legali applicabili."
+  }[locale] || copy.processorsText.replaceAll("Cloudflare", "FormSubmit");
   html = html.replace(/\s*This notice describes the intended configuration and is not a guarantee of legal compliance in every jurisdiction\./i, "");
   html = html.replace(/\s*Esta información describe la configuración prevista y no garantiza el cumplimiento legal en todas las jurisdicciones\./i, "");
   html = html.replace(/\s*Cette notice décrit la configuration prévue et ne garantit pas la conformité juridique dans chaque juridiction\./i, "");
   html = html.replace(/\s*Это уведомление описывает планируемую конфигурацию и не является гарантией юридического соответствия во всех юрисдикциях\./i, "");
   html = html.replace(/\s*Questa informativa descrive la configurazione prevista e non garantisce la conformità legale in ogni giurisdizione\./i, "");
-  const section = `<section class="section rich-text" data-complete-privacy-notice><h2>${copy.h}</h2><h3>${copy.controller}</h3><p>${copy.controllerText}</p><h3>${copy.purpose}</h3><p>${copy.purposeText}</p><h3>${copy.processors}</h3><p>${copy.processorsText}</p><h3>${copy.retention}</h3><p>${copy.retentionText}</p><h3>${copy.rights}</h3><p>${copy.rightsText}</p><p><small>Last updated: 14 August 2026.</small></p></section>`;
+  const section = `<section class="section rich-text" data-complete-privacy-notice><h2>${copy.h}</h2><h3>${copy.controller}</h3><p>${copy.controllerText}</p><h3>${copy.purpose}</h3><p>${copy.purposeText}</p><h3>${copy.processors}</h3><p>${formProcessorNotice}</p><h3>${copy.retention}</h3><p>${copy.retentionText}</p><h3>${copy.rights}</h3><p>${copy.rightsText}</p><p><small>Last updated: 14 August 2026.</small></p></section>`;
   return html.replace(/\s*<\/main>/i, `${section}</main>`);
 }
 
@@ -301,7 +309,7 @@ async function main() {
     const original = await readFile(file, "utf8");
     let html = normalizeInternalIndexLinks(original, route);
     html = normalizeLocaleNavigation(html, label);
-    html = normalizeForms(html);
+    html = normalizeForms(html, label);
     html = normalizeHead(html, label, route);
     html = normalizeAccessibility(html, label);
     html = normalizeFooter(html, label);

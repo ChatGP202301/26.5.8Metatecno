@@ -143,9 +143,7 @@
       analytics("form_start", { form_type: "rfq" });
     }, { once: true });
     if (phone) phone.addEventListener("input", updatePhone);
-    mountTurnstile(form);
     form.addEventListener("submit", async (event) => {
-      event.preventDefault();
       const text = languageMessages();
       if (!updatePhone() || !form.checkValidity()) {
         analytics("form_error", { reason_code: "validation" });
@@ -168,6 +166,14 @@
       const pageInput = form.querySelector("[data-submitted-page]");
       if (countryInput) countryInput.value = phone ? phone.dataset.country || "" : "";
       if (pageInput) pageInput.value = location.href;
+      const subjectInput = form.querySelector('input[name="_subject"]');
+      if (subjectInput) subjectInput.value = "Metatecno website inquiry from " + (new FormData(form).get("Name") || "website visitor");
+      if (new URL(form.action, location.href).hostname === "formsubmit.co") {
+        if (formStatus) formStatus.textContent = "Validation passed. Sending...";
+        analytics("form_submit", { form_type: "rfq" });
+        return;
+      }
+      event.preventDefault();
       const token = form.dataset.turnstileToken || form.querySelector('input[name="cf-turnstile-response"]')?.value || "";
       if (!token) {
         analytics("form_error", { reason_code: "turnstile_missing" });
