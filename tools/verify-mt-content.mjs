@@ -1,16 +1,24 @@
 #!/usr/bin/env node
 import { access, readFile, readdir } from "node:fs/promises";
 import { basename, extname, relative, resolve } from "node:path";
+import { MT27_INDEX_SCOPE, isMt27PublicationEligible } from "./mt27-scoped-release.mjs";
 
 const root = resolve(process.cwd());
 const locales = ["en", "es", "pt", "fr", "ru", "ar"];
 const modelRoute = "products/mt-2-7-ion-membrane-electrolyzer/index.html";
 const repairRoute = "services/electrolyzer-cell-repair/index.html";
-const reviewPages = locales.flatMap((locale) => [
+const defaultReviewPages = locales.flatMap((locale) => [
   `${locale}/${modelRoute}`,
   `${locale}/${repairRoute}`,
 ]);
-reviewPages.push("ar/electrolyzer-cells/index.html");
+defaultReviewPages.push("ar/electrolyzer-cells/index.html");
+const scopeIndex = process.argv.indexOf("--scope");
+const scope = scopeIndex >= 0 ? process.argv[scopeIndex + 1] : "";
+if (scope && scope !== "mt27-indexing") throw new Error(`Unsupported verification scope: ${scope}`);
+const scoped = scope === "mt27-indexing";
+const reviewPages = scoped ? MT27_INDEX_SCOPE.map((route) => `${route.slice(1)}index.html`) : defaultReviewPages;
+const policy = JSON.parse(await readFile(resolve(root, "site-policy.json"), "utf8"));
+const mt27Review = JSON.parse(await readFile(resolve(root, "seo/mt27-release-review.json"), "utf8"));
 
 const forbidden = [
   { label: "legacy model HJZ", regex: /HJZ/i },
@@ -21,6 +29,7 @@ const forbidden = [
   { label: "legacy landline or fax", regex: /0830[\s\-—–]*(?:2701871|2700029)/i },
 ];
 const failures = [];
+const referencedAssets = new Set();
 const affectedTextExtensions = new Set([".html", ".css", ".js", ".mjs", ".json", ".xml", ".txt", ".md"]);
 const skipDirectories = new Set([".git", "node_modules", "_site", ".wrangler", ".pnpm-store"]);
 
@@ -77,7 +86,10 @@ for (const name of reviewPages) {
     fail(`${name}: missing review page`);
     continue;
   }
-  if (!/<meta\s+name=["']robots["']\s+content=["']noindex,follow["']/i.test(html)) fail(`${name}: must remain noindex,follow`);
+  const route = `/${name.replace(/index\.html$/, "")}`;
+  if (scoped && !isMt27PublicationEligible(route, policy, mt27Review)) fail(`${name}: exact MT-2.7 scope is not eligible for publication`);
+  const expectedRobots = isMt27PublicationEligible(route, policy, mt27Review) ? "index,follow" : "noindex,follow";
+  if (!new RegExp(`<meta\\s+name=["']robots["']\\s+content=["']${expectedRobots}["']`, "i").test(html)) fail(`${name}: must declare ${expectedRobots} under the exact MT-2.7 scope policy`);
   if (!/<link\s+rel=["']canonical["']/i.test(html)) fail(`${name}: missing canonical`);
   if (!/<script\s+type=["']application\/ld\+json["']/.test(html)) fail(`${name}: missing structured data`);
   for (const script of html.matchAll(/<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
@@ -92,6 +104,12 @@ for (const name of reviewPages) {
     if (!/<form\b(?=[^>]*data-contact-form)(?=[^>]*action=["']https:\/\/formsubmit\.co\/expresswater025@gmail\.com["'])/i.test(html)) fail(`${name}: repair inquiry must use the established email delivery route`);
   }
   if (name.startsWith("ar/") && !/<html\b[^>]*lang=["']ar["'][^>]*dir=["']rtl["']/i.test(html)) fail(`${name}: Arabic page must declare RTL`);
+  if (scoped && /__(?:TURNSTILE_SITE_KEY|GA4_MEASUREMENT_ID)__|meta\s+name=["']metatecno-(?:turnstile-sitekey|ga4-id)["']/i.test(html)) fail(`${name}: scoped GitHub Pages source must not contain inactive production-variable placeholders`);
+  if (scoped && name.includes(repairRoute)) {
+    const form = html.match(/<form\b(?=[^>]*data-contact-form)[^>]*>[\s\S]*?<\/form>/i)?.[0] || "";
+    if (!/name=["']_captcha["']\s+value=["']true["']/i.test(form)) fail(`${name}: FormSubmit CAPTCHA must remain enabled`);
+    if (!/name=["']_honey["']/i.test(form) || !/name=["']website_url["']/i.test(form)) fail(`${name}: both FormSubmit honeypots must remain present`);
+  }
   for (const item of forbidden) if (item.regex.test(html)) fail(`${name}: contains ${item.label}`);
   const references = [];
   for (const match of html.matchAll(/\b(?:src|href)=["']([^"']+)["']/gi)) references.push(match[1]);
@@ -101,11 +119,12 @@ for (const name of reviewPages) {
   for (const value of references) {
     const asset = routeAsset(value);
     if (!asset || !/\.(?:avif|css|gif|jpe?g|js|png|svg|webp)$/i.test(asset)) continue;
+    referencedAssets.add(asset);
     try { await access(asset); } catch { fail(`${name}: missing local asset ${value}`); }
   }
 }
 
-const files = await walk(root);
+const files = scoped ? reviewPages.map((name) => resolve(root, name)) : await walk(root);
 for (const path of files) {
   const name = relative(root, path).split("\\").join("/");
   for (const item of forbidden) if (item.regex.test(name)) fail(`${name}: forbidden term in filename`);
@@ -118,7 +137,10 @@ for (const path of files) {
 const imageRoots = [resolve(root, "assets/media")];
 let imageCount = 0;
 for (const imageRoot of imageRoots) {
-  for (const path of await walk(imageRoot, [])) {
+  const imagePaths = scoped
+    ? [...referencedAssets].filter((path) => path.startsWith(`${imageRoot}/`))
+    : await walk(imageRoot, []);
+  for (const path of imagePaths) {
     if (!/\.(?:jpe?g|png|webp)$/i.test(path)) continue;
     imageCount += 1;
     const bytes = await readFile(path);
@@ -141,10 +163,10 @@ for (const imageRoot of imageRoots) {
   }
 }
 
-if (imageCount < 186) fail(`Expected at least 186 governed site image files, found ${imageCount}`);
+if (!scoped && imageCount < 186) fail(`Expected at least 186 governed site image files, found ${imageCount}`);
 if (failures.length) {
   console.error(failures.join("\n"));
   console.error(`mt_verification_failed=${failures.length}`);
   process.exit(1);
 }
-console.log(`mt_verification_passed pages=${reviewPages.length} technical_images=${imageCount}`);
+console.log(`mt_verification_passed${scoped ? " scope=mt27-indexing" : ""} pages=${reviewPages.length} technical_images=${imageCount}`);

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
+import { isMt27Page, isMt27PublicationEligible } from "./mt27-scoped-release.mjs";
 
 const ROOT = process.cwd();
 const MODE = process.argv.includes("--write") ? "write" : "check";
@@ -14,6 +15,8 @@ async function loadJson(path, fallback) {
 }
 const CONTENT_EVIDENCE = await loadJson("seo/content-evidence.json", { pages: [] });
 const INDEXING_DECISIONS = await loadJson("seo/indexing-decisions.generated.json", { status: "blocked", decisions: [] });
+const MT27_RELEASE_REVIEW = await loadJson("seo/mt27-release-review.json", {});
+const SITE_POLICY = await loadJson("site-policy.json", {});
 const CONTENT_STATUS_BY_PATH = new Map((CONTENT_EVIDENCE.pages || []).map((page) => [page.path, page.status]));
 const INDEXING_DECISION_BY_PATH = new Map(
   INDEXING_DECISIONS.status === "ready"
@@ -22,6 +25,11 @@ const INDEXING_DECISION_BY_PATH = new Map(
 );
 const GOVERNED_ACTION_BY_PATH = new Map(INDEXING_DECISION_BY_PATH);
 for (const [path, status] of CONTENT_STATUS_BY_PATH) GOVERNED_ACTION_BY_PATH.set(path, status === "approved" ? "preserve" : "noindex_follow");
+for (const path of CONTENT_STATUS_BY_PATH.keys()) {
+  if (isMt27PublicationEligible(path, SITE_POLICY, MT27_RELEASE_REVIEW)) {
+    GOVERNED_ACTION_BY_PATH.set(path, "preserve");
+  }
+}
 const SKIP_LABEL = {
   en: "Skip to main content", es: "Saltar al contenido principal", pt: "Ir para o conteúdo principal",
   fr: "Aller au contenu principal", ru: "Перейти к основному содержанию", ar: "الانتقال إلى المحتوى الرئيسي",
@@ -79,8 +87,9 @@ function escapeAttribute(value) { return value.replace(/&/g, "&amp;").replace(/"
 function governanceRobots(route) {
   const contentStatus = CONTENT_STATUS_BY_PATH.get(route);
   const indexingAction = INDEXING_DECISION_BY_PATH.get(route);
-  if (contentStatus && contentStatus !== "approved") return "noindex,follow";
   if (indexingAction === "noindex_follow") return "noindex,follow";
+  if (isMt27PublicationEligible(route, SITE_POLICY, MT27_RELEASE_REVIEW)) return "index,follow";
+  if (contentStatus && contentStatus !== "approved") return "noindex,follow";
   if (contentStatus === "approved" || indexingAction === "preserve") return "index,follow";
   return null;
 }
@@ -101,6 +110,13 @@ function hreflangForPath(path) {
 }
 
 function reconcileGovernedHreflang(html, route) {
+  if (isMt27Page(route)) {
+    html = html.replace(/\s*<link\s+rel=["']alternate["'][^>]*>/gi, (tag) => {
+      const href = tag.match(/\shref=["']([^"']+)["']/i)?.[1];
+      try { return href && new URL(href, ORIGIN).origin === ORIGIN ? "" : tag; }
+      catch { return tag; }
+    });
+  }
   html = html.replace(/\s*<link\s+rel=["']alternate["'][^>]*\shref=["']([^"']+)["'][^>]*>/gi, (tag, href) => {
     let path;
     try {
@@ -111,10 +127,12 @@ function reconcileGovernedHreflang(html, route) {
     return governanceRobots(path) === "noindex,follow" ? "" : tag;
   });
   if (governanceRobots(route) === "noindex,follow") return html;
+  const scopedMt27Route = isMt27Page(route);
   const group = hreflangGroup(route);
   const additions = [];
   for (const [targetPath, action] of GOVERNED_ACTION_BY_PATH) {
     if (action !== "preserve" || hreflangGroup(targetPath) !== group) continue;
+    if (isMt27Page(targetPath) !== scopedMt27Route) continue;
     const hreflang = hreflangForPath(targetPath);
     const href = `${ORIGIN}${targetPath}`;
     const escapedHref = href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -205,11 +223,13 @@ function normalizeHead(html, label, route) {
   }
 
   html = html.replace(/\s*<meta\b[^>]*(?:property=["']og:[^"']+["']|name=["']twitter:[^"']+["'])[^>]*>/gi, "");
-  const retainUnusedTurnstileMeta = !/<form\b[^>]*data-contact-form/i.test(html);
+  const isScopedMt27Page = isMt27Page(route);
+  const retainUnusedTurnstileMeta = !isScopedMt27Page && !/<form\b[^>]*data-contact-form/i.test(html);
   html = html.replace(/\s*<meta\s+name=["']metatecno-(?:turnstile-sitekey|ga4-id)["'][^>]*>/gi, "");
   html = html.replace(/\s*<link\s+rel=["']stylesheet["']\s+href=["'][^"']*assets\/quality\.css["'][^>]*>/gi, "");
-  const social = `${retainUnusedTurnstileMeta ? '\n  <meta name="metatecno-turnstile-sitekey" content="__TURNSTILE_SITE_KEY__">' : ""}
-  <meta name="metatecno-ga4-id" content="__GA4_MEASUREMENT_ID__">
+  const publicTrackingMetadata = isScopedMt27Page ? "" : `${retainUnusedTurnstileMeta ? '\n  <meta name="metatecno-turnstile-sitekey" content="__TURNSTILE_SITE_KEY__">' : ""}
+  <meta name="metatecno-ga4-id" content="__GA4_MEASUREMENT_ID__">`;
+  const social = `${publicTrackingMetadata}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Metatecno">
   <meta property="og:title" content="${escapeAttribute(title)}">

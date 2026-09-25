@@ -34,6 +34,52 @@
     "status": "awaiting-16-month-export",
     "preserveWhen": ["organic_click", "qualified_lead", "meaningful_backlink", "native_review_passed"],
     "otherwise": "reviewed_then_noindex_follow",
-    "missingEvidence": "hold"
+    "missingEvidence": "hold",
+    "scopedWaivers": [
+      {
+        "id": "mt27-product-and-repair-indexing-2026-09-24",
+        "authorizedByRole": "site-owner",
+        "authorizedAt": "2026-09-24",
+        "baselineWaived": true,
+        "baselineStatusRemains": "awaiting-16-month-export",
+        "scope": [
+          "/en/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/en/services/electrolyzer-cell-repair/",
+          "/es/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/es/services/electrolyzer-cell-repair/",
+          "/pt/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/pt/services/electrolyzer-cell-repair/",
+          "/fr/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/fr/services/electrolyzer-cell-repair/",
+          "/ru/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/ru/services/electrolyzer-cell-repair/",
+          "/ar/products/mt-2-7-ion-membrane-electrolyzer/",
+          "/ar/services/electrolyzer-cell-repair/"
+        ],
+        "reason": "The site owner explicitly waived the 16-month Search Console baseline for these MT-2.7 product and repair URLs only. The historical baseline remains incomplete."
+      }
+    ]
+  },
+  "scopedPublication": {
+    "id": "mt27-product-and-repair-2026-09-24",
+    "authorizedByRole": "site-owner",
+    "authorizedAt": "2026-09-24",
+    "publishAuthorized": true,
+    "reviewEvidence": "seo/mt27-release-review.json",
+    "scope": [
+      "/en/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/en/services/electrolyzer-cell-repair/",
+      "/es/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/es/services/electrolyzer-cell-repair/",
+      "/pt/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/pt/services/electrolyzer-cell-repair/",
+      "/fr/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/fr/services/electrolyzer-cell-repair/",
+      "/ru/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/ru/services/electrolyzer-cell-repair/",
+      "/ar/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/ar/services/electrolyzer-cell-repair/"
+    ],
+    "rule": "Applies only to this user-authorized MT-2.7 batch; does not complete human review roles or change site-wide governance. Arabic remains held until RTL visual evidence is recorded."
   }
 }

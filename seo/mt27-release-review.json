@@ -1,0 +1,42 @@
+{
+  "status": "ai-review-complete",
+  "reviewType": "AI adversarial review; not human native-language or legal approval",
+  "reviewedAt": "2026-09-24",
+  "rounds": 3,
+  "dimensions": [
+    "technical-claims",
+    "sales-scope-and-conditions",
+    "locale-and-brand-safety"
+  ],
+  "scope": [
+    "/en/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/en/services/electrolyzer-cell-repair/",
+    "/es/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/es/services/electrolyzer-cell-repair/",
+    "/pt/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/pt/services/electrolyzer-cell-repair/",
+    "/fr/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/fr/services/electrolyzer-cell-repair/",
+    "/ru/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/ru/services/electrolyzer-cell-repair/",
+    "/ar/products/mt-2-7-ion-membrane-electrolyzer/",
+    "/ar/services/electrolyzer-cell-repair/"
+  ],
+  "findings": [
+    "Claims and specifications retained only where supported by the supplied page/PPT content or the user's report of engineering confirmation; no new performance figures or guarantees added.",
+    "Sales scope, quotation prerequisites, and repair options were checked for consistent conditional wording across locales.",
+    "Legacy model/company identifiers and unsupported OEM-affiliation implications were checked; localized copy changes are logged in the external release journal.",
+    "French and Russian technical terminology remain AI-reviewed, not certified by a human native speaker or engineer."
+  ],
+  "arabicRtlVisualReview": {
+    "status": "passed",
+    "evidence": "2026-09-25 automated Playwright 1.55.0 / Chromium 140 headless run against the Eleventy preview build (_site) using tools/test-mt27-arabic-rtl.cjs; both Arabic pages passed at 1440x1000 and 390x844, all referenced images decoded, lang=ar and dir=rtl confirmed, and no horizontal overflow. Four screenshots and SHA-256 hashes are retained outside the repository in the release journal. GitHub Actions workflow .github/workflows/mt27-arabic-rtl.yml repeats the checks on the release PR.",
+    "browser": "Chromium 140.0.7339.16",
+    "viewports": ["1440x1000", "390x844"],
+    "checkedPages": [
+      "/ar/products/mt-2-7-ion-membrane-electrolyzer/",
+      "/ar/services/electrolyzer-cell-repair/"
+    ],
+    "note": "Automated visual-layout checks passed; this is not a human native-language review."
+  }
+}

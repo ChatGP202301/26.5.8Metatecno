@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { readinessFailures } from "./check-release-readiness.mjs";
+import { MT27_INDEX_SCOPE } from "./mt27-scoped-release.mjs";
 
 const approved = {
   legalReviewApproved: true,
@@ -52,6 +54,29 @@ assert.ok(failures.some((message) => message.includes("GA4")));
 assert.ok(failures.some((message) => message.includes("GSC") || message.includes("evidence baseline")));
 assert.ok(failures.some((message) => message.includes("indexing decision")));
 
+const scopedPolicy = JSON.parse(await readFile(new URL("../site-policy.json", import.meta.url), "utf8"));
+const scopedReview = JSON.parse(await readFile(new URL("../seo/mt27-release-review.json", import.meta.url), "utf8"));
+const visuallyPassedReview = {
+  ...scopedReview,
+  arabicRtlVisualReview: { status: "passed", evidence: "fixture-only: automated desktop/narrow-screen test" }
+};
+const incompleteBaseline = JSON.parse(await readFile(new URL("../seo/evidence/baseline-status.json", import.meta.url), "utf8"));
+const blockedDecisions = JSON.parse(await readFile(new URL("../seo/indexing-decisions.generated.json", import.meta.url), "utf8"));
+failures = readinessFailures({
+  target: "site",
+  scope: "mt27-indexing",
+  env: { TURNSTILE_SITE_KEY: "0x4AAAAAAAAabcdefghijklmnop", GA4_MEASUREMENT_ID: "G-ABCDEF1234" },
+  approvals: { legalReviewApproved: false, nativeLanguageReview: { "es-419": false, "pt-BR": false, fr: false, ru: false } },
+  wrangler: {},
+  policy: scopedPolicy,
+  baseline: incompleteBaseline,
+  indexingDecisions: blockedDecisions,
+  mt27Review: visuallyPassedReview
+});
+assert.deepEqual(failures, [], "the exact owner-authorized 12-URL AI-review exception must not require fictitious human approvals");
+assert.equal(scopedPolicy.gscGate.status, "awaiting-16-month-export", "the original 16-month baseline must remain incomplete");
+assert.equal(MT27_INDEX_SCOPE.length, 12, "the exception must remain exactly 12 URLs");
+
 assert.deepEqual(readinessFailures({
   target: "worker",
   env: { CLOUDFLARE_API_TOKEN: "test-token-with-sufficient-length", CLOUDFLARE_ACCOUNT_ID: "0123456789abcdef0123456789abcdef" },
@@ -74,4 +99,4 @@ assert.ok(failures.some((message) => message.includes("API_TOKEN")));
 assert.ok(failures.some((message) => message.includes("ACCOUNT_ID")));
 assert.ok(failures.some((message) => message.includes("Cron Trigger")));
 
-console.log("release_readiness_tests_passed scenarios=4");
+console.log("release_readiness_tests_passed scenarios=5");

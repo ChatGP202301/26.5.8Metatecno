@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
+import { isMt27PublicationEligible } from "./mt27-scoped-release.mjs";
 
 const ROOT = process.cwd();
 const MODE = process.argv.includes("--write") ? "write" : "check";
@@ -45,6 +46,7 @@ async function generate() {
   const policy = await loadJson("site-policy.json", { manifestVersion: 1 });
   const contentEvidence = await loadJson("seo/content-evidence.json", { pages: [] });
   const indexingDecisions = await loadJson("seo/indexing-decisions.generated.json", { status: "blocked", decisions: [] });
+  const mt27ReleaseReview = await loadJson("seo/mt27-release-review.json", {});
   const contentStatusByPath = new Map((contentEvidence.pages || []).map((page) => [page.path, page.status]));
   const indexingDecisionByPath = new Map(
     indexingDecisions.status === "ready"
@@ -62,7 +64,10 @@ async function generate() {
     const locale = folderLocale === "es" ? "es-419" : folderLocale === "pt" ? "pt-BR" : folderLocale;
     const contentEvidenceStatus = contentStatusByPath.get(path) || null;
     const indexingDecision = indexingDecisionByPath.get(path) || null;
-    const governanceNoindex = (contentEvidenceStatus && contentEvidenceStatus !== "approved") || indexingDecision === "noindex_follow";
+    const mt27ScopedEligible = indexingDecision !== "noindex_follow"
+      && isMt27PublicationEligible(path, policy, mt27ReleaseReview);
+    const governanceNoindex = indexingDecision === "noindex_follow"
+      || ((contentEvidenceStatus && contentEvidenceStatus !== "approved") && !mt27ScopedEligible);
     const baseIndexable = !/noindex/i.test(robots) && canonical === `${ORIGIN}${path}`;
     pages.push({
       source: fileLabel,
@@ -75,6 +80,7 @@ async function generate() {
       hreflangGroup: hreflangGroup(path),
       ...(contentEvidenceStatus ? { contentEvidenceStatus } : {}),
       ...(indexingDecision ? { indexingDecision } : {}),
+      ...(mt27ScopedEligible ? { publicationBasis: "scoped-owner-authorization-and-ai-review" } : {}),
       redirectSource: path === "/en/" ? "/en/" : null,
       redirectTarget: path === "/en/" ? "/" : null,
       lastModified: BUILD_DATE
