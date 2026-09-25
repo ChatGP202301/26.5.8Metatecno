@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readFile, readdir } from "node:fs/promises";
 import { relative, resolve, sep } from "node:path";
+import { isMt27PublicationEligible } from "./mt27-scoped-release.mjs";
 
 let root = process.cwd();
 const built = process.argv.includes("--built");
@@ -91,6 +92,8 @@ if (sitemapUrls.length !== new Set(sitemapUrls).size) fail("Sitemap contains dup
 if (sitemapUrls.length !== manifestSitemap.size || sitemapUrls.some((url) => !manifestSitemap.has(url))) fail("Sitemap does not exactly match the manifest indexable set.");
 
 const contentEvidence = JSON.parse(await readFile(resolve(governanceRoot, "seo/content-evidence.json"), "utf8"));
+const publicationPolicy = JSON.parse(await readFile(resolve(governanceRoot, "site-policy.json"), "utf8"));
+const mt27Review = JSON.parse(await readFile(resolve(governanceRoot, "seo/mt27-release-review.json"), "utf8"));
 const governanceNoindexPaths = new Set();
 for (const entry of contentEvidence.pages || []) {
   const state = pageStateByRoute.get(entry.path);
@@ -100,6 +103,11 @@ for (const entry of contentEvidence.pages || []) {
     continue;
   }
   if (entry.status !== "approved") {
+    if (isMt27PublicationEligible(entry.path, publicationPolicy, mt27Review)) {
+      if (!/^index,follow$/i.test(state.robots)) fail(`${state.name}: scoped MT-2.7 publication exception is not reflected as index,follow`);
+      if (!page.sitemap) fail(`${state.name}: eligible scoped MT-2.7 page is missing from the sitemap`);
+      continue;
+    }
     governanceNoindexPaths.add(entry.path);
     if (!/noindex/i.test(state.robots)) fail(`${state.name}: unapproved evidence content must be noindex`);
     if (page.sitemap) fail(`${state.name}: unapproved evidence content must not be in Sitemap`);
